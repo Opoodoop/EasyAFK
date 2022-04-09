@@ -10,6 +10,5 @@ to use simply follow these instructions.
 8. login to steam via idle master
 9. right click on the run.bat file in the EasyAFK folder
 10. click edit
-11. change the idle master directory
-12. copy everything from inside result.txt and paste it inbetween the lines in run.bat
-13. save run.bat and run it
+11. change the idle master directory inside of result.bat
+13. save result.bat and run it
