@@ -3,8 +3,8 @@ import sys
 import urllib.request
 import xml.etree.ElementTree as ET
 
-begining = "@echo off\necho welcome to opoodoop's steam afk script\n\n## here you can change the directory for idle master \n## download idle master here https://github.com/JonasNilson/idle_master_extended/releases \n\nCD [Idle master directory here]\n\n"
-TheEnd = "\necho stop afking?\npause\ntaskkill /IM \"steam-idle.exe\" /F"
+begining = "@echo off\necho welcome to opoodoop's steam afk script\n\n## here you can change the directory for idle master \n## download idle master here https://github.com/JonasNilson/idle_master_extended/releases \n\nCD [Idle master directory here]\n\n:startup\ntaskkill /IM \"steam-idle.exe\" /F\n"
+TheEnd = "\necho press 1 to reset games, press 2 to stop AFKing,\nset /p input=\"choice: \"\nif %"+"input%==1 goto startup\nif %"+"input%==2 taskkill /IM \"steam-idle.exe\"\ntaskkill /IM \"steam-idle.exe\""
 
 def get_steam_xml(username):
     xml_url = 'http://steamcommunity.com/id/{}/games?tab=all&xml=1'.format(
