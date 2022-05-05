@@ -2,8 +2,9 @@ import os
 import sys
 import urllib.request
 import xml.etree.ElementTree as ET
+from pathlib import Path
 
-begining = "@echo off\necho welcome to opoodoop's steam afk script\n\n## here you can change the directory for idle master \n## download idle master here https://github.com/JonasNilson/idle_master_extended/releases \n\nCD [Idle master directory here]\n\n:startup\ntaskkill /IM \"steam-idle.exe\" /F\n"
+begining = "@echo off\necho welcome to opoodoop's steam afk script\n\nrem here you can change the directory for idle master \n\nCD " + str(Path.cwd()) + "\idle_master_extended\n\n:startup\ntaskkill /IM \"steam-idle.exe\" /F\n"
 TheEnd = "\necho press 1 to reset games, press 2 to stop AFKing,\nset /p input=\"choice: \"\nif %"+"input%==1 goto startup\nif %"+"input%==2 taskkill /IM \"steam-idle.exe\"\ntaskkill /IM \"steam-idle.exe\""
 
 def get_steam_xml(username):
@@ -41,7 +42,7 @@ def main():
     with open(path_to_save + '/result.bat', 'w', encoding='utf-8') as f:
         f.write(begining)
         for id, name in get_ids(username).items():
-            f.write("start/min steam-idle.exe "+id+"\necho sucsessfully started game \""+name+"\" \n")
+            f.write("start/min steam-idle.exe "+id+"\n")
         f.write(TheEnd)
 
 
